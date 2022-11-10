@@ -1,10 +1,11 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include"puissance4.c"
-#include"message.c"
-#include"lire.c"
-#include"justeprix.c"
-#include"pendu.c"
+#include <stdio.h>
+#include <stdlib.h>
+#include "puissance4.c"
+#include "message.c"
+#include "lire.c"
+#include "justeprix.c"
+#include "pendu.c"
+#include "morpion.c"
 
 int main(){
     int choix=1;
@@ -12,11 +13,11 @@ int main(){
 
     /* Rajoute ton jeu au print*/
         printf("\n---------------------\n");
-        printf("A quoi voulez vous jouer ? \n\n 1. Morpion \n 2. Puissance4\n 3. Juste Prix\n 4. Pendu\n\n 11. Envoyer un message\n 12. Lire les messages \n\n 0. STOP \n\nMon choix : ");        scanf("%d",&choix);
+        printf("A quoi voulez vous jouer ? \n\n 1. Morpion \n 2. Puissance4\n 3. Juste Prix\n 4. Pendu\n 5. Morpion\n\n 11. Envoyer un message\n 12. Lire les messages \n\n 0. STOP \n\nMon choix : ");        scanf("%d",&choix);
 
     /* Rajoute un case au switch*/
-        switch(choix)
-        {
+        switch(choix) {
+
         case 1 :
             printf("\n Choix 1 : Morpion\n\n");
             //morpion();
@@ -37,7 +38,10 @@ int main(){
             pendu();
             break;
         
-
+        case 5:
+            printf("\n Choix 5 : Morpion\n");
+            morpion();
+            break;
         
         
         case 11:
@@ -50,10 +54,8 @@ int main(){
             lire();
             break;
         }
+
     }
     return 0;
-
-
-
         
 }

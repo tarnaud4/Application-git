@@ -1,7 +1,17 @@
+//Pendu
+
+/*
+On peut ptet separer les cas lettre deja dite / lettre pas dans le mot avec juste un tableau en plus de lettres dites
+J'ai rajouté un fichier texte avec tous les mots valides au scrabble, ça peut faire une banque plus vaste si c'est aléatoire genre
+Et on pourrait alors choisir la longueur du mot, en triant cette immense liste (j'y songerai)
+*/
+
 #include<stdio.h>
 #include<stdlib.h>
-#include"pendu.h"
 #include<time.h>
+
+void trouvemot(char* str);
+int nombremot();
 
 void pendu(){
     
@@ -32,7 +42,7 @@ void pendu(){
         }
         taille = strlen(mot) - 1;
             
-        for( i=0 ; i<taille ; i++ ){
+        for( i = 0; i < taille; i++ ){
             motc[i] = '*';
         }
         
@@ -41,11 +51,11 @@ void pendu(){
         do{
             printf("\n ---------------------------------------------\n");
             printf("\n Quelle lettre as-tu choisie ?");
-            scanf(" %c",&lettrechoisie);
+            scanf(" %c", &lettrechoisie);
             marque = 0;
-            for (i=0; i<taille; i++){
+            for (i = 0; i < taille; i++){
                 if(lettrechoisie == mot[i] && motc[i] == '*'){
-                    lettretrouve += 1;
+                    lettretrouve++;
                     motc[i] = mot[i];
                     marque = 1;
                 }
@@ -55,12 +65,12 @@ void pendu(){
             }
             else{
                 printf("\nFaux ! la lettre n'est pas dans le mot, ou deja proposee auparavant, il te reste %d essai(s)", nbessai);
-                nbessai -= 1;
+                nbessai--;
             }
             printf("\n\n Etat du mot : %s",motc);
             
 
-        }while(lettretrouve != taille && nbessai>=0);
+        }while(lettretrouve != taille && nbessai >= 0);
 
         if (lettretrouve == taille){
             printf("\n ---------------------------------------------\n\n\n                   Victoire !\n\n\n ---------------------------------------------\n");
@@ -71,7 +81,7 @@ void pendu(){
         }
 
         printf("\n\n Rejouer ? (0 = non, 1 (ou autre) = oui) : ");
-        scanf("%d",&choix);
+        scanf("%d", &choix);
         lettretrouve = 0;
 
     }while(choix != 0);
@@ -102,7 +112,7 @@ void trouvemot(mot){
         do{
             caractere = fgetc(fichier);
             if (caractere == ' '){
-                i += 1;                
+                i++;                
             }
         }while(i<ialeatoire);
 
@@ -111,7 +121,7 @@ void trouvemot(mot){
         do{
             caractere = fgetc(fichier);
             tab[i] = caractere;
-            i += 1;
+            i++;
         }while( caractere != ' ');
 
 
@@ -126,7 +136,7 @@ int nombremot(){
     do {
         caractereactuel = fgetc(fichier);
         if (caractereactuel == ' '){
-            nbmot += 1;
+            nbmot++;
         }
         
     }while (caractereactuel != EOF);

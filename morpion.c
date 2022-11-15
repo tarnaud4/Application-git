@@ -41,6 +41,12 @@ void morpion() {
             else {
                 joueur = 1;
             }
+
+            if (nb_coups >= 9) {
+
+                printf ("\n Egalite, fin du jeu. Joueur 1 t'es naze.\n\n");
+                break;
+            }
         }
 
     }

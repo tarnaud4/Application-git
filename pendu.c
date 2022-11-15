@@ -145,3 +145,4 @@ int nombremot(){
 
     return nbmot;
 }
+

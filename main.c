@@ -13,14 +13,14 @@ int main(){
 
     /* Rajoute ton jeu au print*/
         printf("\n---------------------\n");
-        printf("A quoi voulez vous jouer ? \n\n 1. Morpion \n 2. Puissance4\n 3. Juste Prix\n 4. Pendu\n 5. Morpion\n\n 11. Envoyer un message\n 12. Lire les messages \n\n 0. STOP \n\nMon choix : ");        scanf("%d",&choix);
+        printf("A quoi voulez vous jouer ? \n\n 1. Morpion \n 2. Puissance4\n 3. Juste Prix\n 4. Pendu\n\n 11. Envoyer un message\n 12. Lire les messages \n\n 0. STOP \n\nMon choix : ");        scanf("%d",&choix);
 
     /* Rajoute un case au switch*/
         switch(choix) {
 
         case 1 :
             printf("\n Choix 1 : Morpion\n\n");
-            //morpion();
+            morpion();
             break;
         
         case 2 :
@@ -38,10 +38,6 @@ int main(){
             pendu();
             break;
         
-        case 5:
-            printf("\n Choix 5 : Morpion\n");
-            morpion();
-            break;
         
         
         case 11:

@@ -1,7 +1,7 @@
 //Morpion
 
 /*
-Possibilité de rejouer sur une case deja occupée à corriger (message d'erreur) ,ca retient dans scanf...
+Remplacer joueur 1 et joueur 2 par les noms des pelos qu'on demande au début genre ?
 */
 
 #include <stdio.h> //printf; scanf
@@ -23,17 +23,26 @@ void morpion() {
     printf("\n Jeu du Morpion. \n Le joueur 1 joue les X, le joueur 2 les O. \n Bon jeu !\n\n");
 
     while (fin == 0)  {
+
         case_jouee = jouer_coup((joueur), grille);
-        nb_coups++;
-        if (nb_coups > 4) {
-            fin = victoire(case_jouee, joueur, grille);
-        }   
-        if (joueur == 1) {
-            joueur = 2;
+
+        if (case_jouee < 9) {
+
+            nb_coups++;
+
+            if (nb_coups > 4) {
+                fin = victoire(case_jouee, joueur, grille);
+            }   
+
+            if (joueur == 1) {
+                joueur = 2;
+            }
+
+            else {
+                joueur = 1;
+            }
         }
-        else {
-            joueur = 1;
-        }
+
     }
 
     if (fin == 1) {
@@ -82,11 +91,24 @@ int jouer_coup(int joueur, char grille[9]){
 
     printf(" C'est au tour du joueur %d de jouer. \n Voici l'etat de la grille :\n ", joueur);
     afficher_grille(grille);
-    printf(" Sur quelle ligne joues-tu ?\n");
+    printf("\n Sur quelle ligne joues-tu ?\n");
     scanf ("%d", &ligne_jeu);
-    printf(" Sur quelle colonne joues-tu ?\n");
+    printf("\n Sur quelle colonne joues-tu ?\n");
     scanf ("%d", &colonne_jeu);
     case_jouee = colonne_jeu + 3 * ligne_jeu - 4;
+
+    if (grille[case_jouee] != ' ') {
+        
+        printf("\n Cette case est deja occupee, selectionne une case vide !\n\n");
+        return 9;
+
+    }
+
+    if (case_jouee > 8) {
+
+        printf("\n Choisis une case dans la grille !\n");
+        return 10;
+    }
 
     if (joueur == 1) {
         grille[case_jouee] = 'X';
@@ -97,6 +119,24 @@ int jouer_coup(int joueur, char grille[9]){
     }
 
     return case_jouee;
+
+}
+
+int appartient_tab(char tab[9]) {
+
+    int i;
+
+    for (i = 0; i < 9; i++) {
+
+        if (tab[i] != ' ') {
+            
+            return 1;
+
+        }
+
+    }
+
+    return 0;
 
 }
 

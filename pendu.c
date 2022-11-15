@@ -9,6 +9,7 @@ Et on pourrait alors choisir la longueur du mot, en triant cette immense liste (
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#include<ctype.h>
 
 void trouvemot(char* str);
 int nombremot();
@@ -54,7 +55,7 @@ void pendu(){
             scanf(" %c", &lettrechoisie);
             marque = 0;
             for (i = 0; i < taille; i++){
-                if(lettrechoisie == mot[i] && motc[i] == '*'){
+                if(toupper(lettrechoisie) == mot[i] && motc[i] == '*'){
                     lettretrouve++;
                     motc[i] = mot[i];
                     marque = 1;
@@ -96,7 +97,7 @@ void trouvemot(mot){
 
     char* tab = mot;
     FILE*  fichier = NULL; //ajout d'un fichier
-    fichier = fopen("datapendu.txt", "r");//ouverture du fichier data pendu en lecture
+    fichier = fopen("banque_mots.txt", "r");//ouverture du fichier data pendu en lecture
 
     srand( time(NULL) );//Initialisation de srand
     int nb = nombremot();
@@ -111,7 +112,7 @@ void trouvemot(mot){
         
         do{
             caractere = fgetc(fichier);
-            if (caractere == ' '){
+            if (caractere == '\n'){
                 i++;                
             }
         }while(i<ialeatoire);
@@ -122,7 +123,7 @@ void trouvemot(mot){
             caractere = fgetc(fichier);
             tab[i] = caractere;
             i++;
-        }while( caractere != ' ');
+        }while( caractere != '\n');
 
 
     }
@@ -130,12 +131,12 @@ void trouvemot(mot){
 
 int nombremot(){
     FILE*  fichier = NULL; //ajout d'un fichier
-    fichier = fopen("datapendu.txt", "r");//ouverture du fichier data pendu en lecture
+    fichier = fopen("banque_mots.txt", "r");//ouverture du fichier data pendu en lecture
     int nbmot = 0;
     char caractereactuel;
     do {
         caractereactuel = fgetc(fichier);
-        if (caractereactuel == ' '){
+        if (caractereactuel == '\n'){
             nbmot++;
         }
         

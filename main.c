@@ -6,6 +6,8 @@
 #include "justeprix.c"
 #include "pendu.c"
 #include "morpion.c"
+#include "sinscrire.c"
+#include "seconnecter.c"
 
 int main(){
     int choix=1;
@@ -13,7 +15,7 @@ int main(){
 
     /* Rajoute ton jeu au print*/
         printf("\n---------------------\n");
-        printf("A quoi voulez vous jouer ? \n\n 1. Morpion \n 2. Puissance4\n 3. Juste Prix\n 4. Pendu\n\n 11. Envoyer un message\n 12. Lire les messages \n\n 0. STOP \n\nMon choix : ");        scanf("%d",&choix);
+        printf("A quoi voulez vous jouer ? \n\n 1. Morpion \n 2. Puissance4\n 3. Juste Prix\n 4. Pendu\n\n 11. Envoyer un message\n 12. Lire les messages \n\n 21. Inscription\n 22. Connexion \n\n  0. STOP \n\nMon choix : ");        scanf("%d",&choix);
 
     /* Rajoute un case au switch*/
         switch(choix) {
@@ -48,6 +50,17 @@ int main(){
         case 12:
             printf("\n Choix 12 : Lire les messages\n");
             lire();
+            break;
+
+        case 21:
+            printf("\n Choix 22 : Inscription\n");
+            sinscrire();    
+            break;
+        
+    
+        case 22:
+            printf("\n Choix 22 : Connexion\n");
+            seconnecter();
             break;
         }
 

@@ -10,8 +10,8 @@ int pose (char joueur, int j, char A[6][7]);
 
 void puissance4(){
     int v;
-    char j1 = '1';
-    char j2 = '2';
+    char j1 = 'X';
+    char j2 = '0';
     int nbcoup = 0;
     int coupj;
     int coupi;
@@ -51,7 +51,7 @@ void initialise(char A[6][7]){
     int j;
     for (i = 0; i < 6; i++){
         for (j = 0; j < 7; j++){
-            A[i][j] = 'O';
+            A[i][j] = '.';
         }
     }
 }
@@ -140,7 +140,7 @@ int detecte(char joueur, int i, int j, char A[6][7]){
 
 int pose(char joueur, int j, char A[6][7]){
     int p = 0;
-    while (A[5-p][j] != 'O'){
+    while (A[5-p][j] != '.'){
         p++;
     }
     A[5-p][j] = joueur;
